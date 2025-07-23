@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Free Fire Fire Button Size Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Generate the perfect Free Fire fire button size for your device. Optimize your aim and gameplay!" />
+  <meta name="keywords" content="Free Fire, fire button size, gaming, mobile gaming, aim settings" />
+  <meta name="author" content="Vortexon" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #0a0a2b;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 15px;
+      background-image: radial-gradient(circle at 50% 50%, #1a1a4b 0%, #0a0a2b 100%);
+    }
+    .ad-banner {
+      width: 100%;
+      max-width: 728px;
+      height: 90px;
+      background: linear-gradient(135deg, #2a2a5b 0%, #1a1a4b 100%);
+      border-radius: 10px;
+      margin: 15px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #FFD700;
+      font-weight: bold;
+      border: 1px solid #3a3a6b;
+      overflow: hidden;
+    }
+    .disclaimer-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #FF1493 0%, #FFD700 100%);
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin: 10px 0;
+    }
+    .disclaimer-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 20, 147, 0.7);
+    }
+    .header {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .header h1 {
+      color: #FFD700;
+      font-size: 38px;
+      margin-bottom: 8px;
+      text-shadow: 0 0 15px rgba(255, 20, 147, 0.7);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px rgba(255, 20, 147, 0.5); }
+      to { text-shadow: 0 0 20px rgba(255, 20, 147, 1); }
+    }
+    .header p {
+      color: #aaa;
+      font-size: 16px;
+    }
+    .search-box {
+      background: #1a1a4b;
+      border-radius: 17px;
+      padding: 25px;
+      margin: 20px 0;
+      border: 1px solid #3a3a6b;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    .search-box h2 {
+      color: #FFD700;
+      margin-bottom: 20px;
+      font-size: 20px;
+      text-align: center;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: none;
+      background-color: #2a2a6b;
+      color: white;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .generate-btn, .jump-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #FF1493 0%, #FFD700 100%);
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .generate-btn:hover, .jump-btn:hover, .disclaimer-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 20, 147, 0.7);
+    }
+    .description {
+      background: #1a1a4b;
+      border-radius: 17px;
+      padding: 25px;
+      margin: 20px 0;
+      border: 1px solid #3a3a6b;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+    .description h3 {
+      color: #FFD700;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+    .description p {
+      color: #aaa;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #1a1a4b;
+      padding: 25px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      border: 1px solid #3a3a6b;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    .disclaimer-modal, .result-modal {
+      max-width: 320px;
+      padding: 12px;
+    }
+    .modal h2 {
+      color: #FFD700;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+    .modal p {
+      margin-bottom: 20px;
+      color: #aaa;
+      font-size: 14px;
+    }
+    .modal-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .modal-btn {
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s;
+    }
+    .modal-btn:hover {
+      transform: scale(1.05);
+    }
+    .watch-ad-btn {
+      background: linear-gradient(135deg, #FF1493 0%, #FFD700 100%);
+      color: #000;
+    }
+    .cancel-btn {
+      background: #2a2a6b;
+      color: #FFD700;
+    }
+    #adTimer {
+      font-weight: bold;
+      color: #FFD700;
+    }
+    .result-modal .ad-banner {
+      margin-bottom: 12px;
+    }
+    .result-title {
+      color: #FFD700;
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .bullet-icon {
+      font-size: 28px;
+      margin: 10px 0;
+    }
+    .button-size-item {
+      margin-bottom: 12px;
+    }
+    .button-size-value {
+      font-size: 18px;
+      font-weight: bold;
+      color: #FFD700;
+      text-shadow: 0 0 10px rgba(255, 20, 147, 0.7);
+      margin-bottom: 10px;
+    }
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+      margin-bottom: 20px;
+    }
+    .like-btn, .share-btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s;
+    }
+    .like-btn {
+      background: #2a2a6b;
+      color: #fff;
+    }
+    .like-btn:hover {
+      transform: scale(1.05);
+    }
+    .share-btn {
+      background: #25D366;
+      color: #fff;
+    }
+    .share-btn:hover {
+      transform: scale(1.05);
+    }
+    .close-btn {
+      display: block;
+      margin: 12px auto 0;
+      padding: 8px 18px;
+      background: #2a2a6b;
+      color: #FFD700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .close-btn:hover {
+      transform: scale(1.05);
+    }
+    .footer {
+      text-align: center;
+      margin: 30px 0;
+      color: #666;
+      font-size: 14px;
+    }
+    .error-message {
+      color: #ff6b6b;
+      text-align: center;
+      margin-top: 10px;
+      display: none;
+      font-size: 14px;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      transition: transform 0.2s;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+    .whatsapp-float img {
+      width: 30px;
+      height: 30px;
+    }
+    @media (max-width: 600px) {
+      body { padding: 10px; }
+      .header h1 { font-size: 30px; }
+      .search-box, .description { padding: 15px; }
+      .modal-content, .result-modal, .disclaimer-modal { padding: 12px; max-width: 280px; }
+      .ad-banner { height: 60px; }
+      .disclaimer-btn { font-size: 12px; padding: 8px 15px; }
+      .result-title { font-size: 18px; }
+      .bullet-icon { font-size: 24px; }
+      .button-size-value { font-size: 16px; }
+      .whatsapp-float { width: 40px; height: 40px; }
+      .whatsapp-float img { width: 24px; height: 24px; }
+      .action-buttons { gap: 10px; margin-bottom: 15px; }
+      .like-btn, .share-btn { padding: 8px 15px; font-size: 14px; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Top Ad Banner -->
+  <div class="ad-banner">
+    <script type="text/javascript">
+      atOptions = {
+        'key': '68dc632ece0100cb35656efcb7f3c44c',
+        'format': 'iframe',
+        'height': 90,
+        'width': 728,
+        'params': {}
+      };
+    </script>
+    <script type="text/javascript" src="//fixingcreepingstarter.com/68dc632ece0100cb35656efcb7f3c44c/invoke.js"></script>
+  </div>
+
+  <!-- Disclaimer Button -->
+  <button class="disclaimer-btn" onclick="showDisclaimer()">Disclaimer</button>
+
+  <div class="header">
+    <h1>Free Fire Fire Button Size Generator</h1>
+    <p>Get the perfect fire button size for your device!</p>
+  </div>
+
+  <div class="search-box">
+    <h2>Enter Your Device</h2>
+    <input type="text" id="searchInput" placeholder="Search e.g. Infinix Hot 12" />
+    <div class="error-message" id="errorMessage">Invalid device name. Please enter a valid mobile device.</div>
+    <button class="generate-btn" onclick="validateDevice()">Generate Button Size</button>
+  </div>
+
+  <div class="description">
+    <h3>About This Tool</h3>
+    <p>Free Fire Fire Button Size Generator aapko apke device ke liye perfect fire button size recommend karta hai! Bas apna device name daaliye aur instantly optimized settings paaiye jo aapke gameplay ko next level pe le jayengi. Try karo aur apne aim ko improve karo!</p>
+  </div>
+
+  <!-- Ad Modal -->
+  <div class="modal" id="adModal">
+    <div class="modal-content">
+      <div class="ad-banner">
+        <script type="text/javascript">
+          atOptions = {
+            'key': '68dc632ece0100cb35656efcb7f3c44c',
+            'format': 'iframe',
+            'height': 90,
+            'width': 728,
+            'params': {}
+          };
+        </script>
+        <script type="text/javascript" src="//fixingcreepingstarter.com/68dc632ece0100cb35656efcb7f3c44c/invoke.js"></script>
+      </div>
+      <h2>Please Wait...</h2>
+      <p>Watch a short ad to unlock your Free Fire fire button size</p>
+      <div id="adTimerContainer" style="display:none;">
+        <p>Ad is playing... <span id="adTimer">15</span> seconds remaining</p>
+      </div>
+      <div class="modal-buttons">
+        <button class="modal-btn watch-ad-btn" onclick="startAd()">WATCH AD</button>
+        <button class="modal-btn cancel-btn" onclick="closeModal()">CANCEL</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Result Modal -->
+  <div class="modal" id="resultModal">
+    <div class="modal-content result-modal">
+      <div class="ad-banner">
+        <script type="text/javascript">
+          atOptions = {
+            'key': '68dc632ece0100cb35656efcb7f3c44c',
+            'format': 'iframe',
+            'height': 90,
+            'width': 728,
+            'params': {}
+          };
+        </script>
+        <script type="text/javascript" src="//fixingcreepingstarter.com/68dc632ece0100cb35656efcb7f3c44c/invoke.js"></script>
+      </div>
+      <div class="result-title" id="resultTitle"></div>
+      <div class="bullet-icon">🔫</div>
+      <div class="button-size-item">
+        <div class="button-size-value" id="buttonSizeValue"></div>
+      </div>
+      <div class="action-buttons">
+        <button class="like-btn" id="likeBtn" onclick="hideLike()">❤️ Like</button>
+        <button class="share-btn" onclick="shareResult()">🟢 Share</button>
+      </div>
+      <button class="jump-btn" onclick="jumpToPro()">Jump to Pro Settings</button>
+      <button class="close-btn" onclick="closeResults()">Close</button>
+    </div>
+  </div>
+
+  <!-- Disclaimer Modal -->
+  <div class="modal" id="disclaimerModal">
+    <div class="modal-content disclaimer-modal">
+      <h2>Free Fire Fire Button Size Disclaimer</h2>
+      <p>Hum jo fire button size settings provide karte hain, woh public sources aur community feedback se collect ki gayi hain. Yeh settings 100% perfect ya guaranteed working nahi hain, kyunki har device alag hota hai. Agar aapko gameplay mein koi issue ya maza na aaye, to kripya apna feedback humein zaroor dein. Shukriya!</p>
+      <button class="close-btn" onclick="closeDisclaimer()">Close</button>
+    </div>
+  </div>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/your-whatsapp-channel" target="_blank">
+    <div class="whatsapp-float">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </div>
+  </a>
+
+  <!-- Bottom Ad Banner -->
+  <div class="ad-banner">
+    <script type="text/javascript">
+      atOptions = {
+        'key': '68dc632ece0100cb35656efcb7f3c44c',
+        'format': 'iframe',
+        'height': 90,
+        'width': 728,
+        'params': {}
+      };
+    </script>
+    <script type="text/javascript" src="//fixingcreepingstarter.com/68dc632ece0100cb35656efcb7f3c44c/invoke.js"></script>
+  </div>
+
+  <div class="footer">
+    <p>© 2025 - All rights reserved | Vortexon</p>
+  </div>
+
+  <script>
+    // List of valid mobile device brands and keywords
+    const validDevices = [
+      'samsung', 'iphone', 'xiaomi', 'redmi', 'poco', 'oppo', 'vivo', 'realme', 
+      'oneplus', 'infinix', 'tecno', 'nokia', 'motorola', 'asus', 'lenovo',
+      'lg', 'sony', 'htc', 'huawei', 'honor', 'black shark', 'nubia', 'rog',
+      'galaxy', 'red magic', 'legion', 'narzo', 'hot', 'note', 'a', 's', 'm'
+    ];
+
+    // Fire button size generation
+    function hashCode(str) {
+      let hash = 0;
+      for (let i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      return hash;
+    }
+
+    function seededRandom(seed, min, max) {
+      const x = Math.abs(Math.sin(seed++) * 10000);
+      return Math.floor((x - Math.floor(x)) * (max - min + 1)) + min;
+    }
+
+    function getButtonSize(device) {
+      const seed = hashCode(device.toLowerCase());
+      const size = seededRandom(seed, 45, 75); // Range: 45-75%
+      return { size };
+    }
+
+    let currentDevice = "";
+    let adWindow = null;
+
+    // Validate device name before showing ad
+    function validateDevice() {
+      const deviceName = document.getElementById("searchInput").value.trim();
+      const errorElement = document.getElementById("errorMessage");
+
+      if (deviceName.length < 3) {
+        errorElement.style.display = "block";
+        errorElement.textContent = "Please enter at least 3 characters";
+        return;
+      }
+
+      const isMobileDevice = validDevices.some(device => 
+        deviceName.toLowerCase().includes(device)
+      );
+
+      if (!isMobileDevice) {
+        errorElement.style.display = "block";
+        errorElement.textContent = "Invalid device name. Please enter a valid mobile device.";
+        return;
+      }
+
+      errorElement.style.display = "none";
+      currentDevice = deviceName;
+      document.getElementById("adModal").style.display = "flex";
+      document.getElementById("adTimerContainer").style.display = "none";
+      document.querySelector('.watch-ad-btn').style.display = "block";
+    }
+
+    // Modal functions
+    function closeModal() {
+      document.getElementById("adModal").style.display = "none";
+      if (adWindow && !adWindow.closed) {
+        adWindow.close();
+      }
+    }
+
+    function closeResults() {
+      document.getElementById("resultModal").style.display = "none";
+    }
+
+    function closeDisclaimer() {
+      document.getElementById("disclaimerModal").style.display = "none";
+    }
+
+    function showDisclaimer() {
+      document.getElementById("disclaimerModal").style.display = "flex";
+    }
+
+    function startAd() {
+      document.getElementById("adTimerContainer").style.display = "block";
+      document.querySelector('.watch-ad-btn').style.display = "none";
+      adWindow = window.open('https://fixingcreepingstarter.com/mc1p49n1?key=a39741a7496e5e9fe605e44021ebf11b', '_blank');
+
+      let seconds = 15;
+      const timerElement = document.getElementById("adTimer");
+      timerElement.textContent = seconds;
+
+      const interval = setInterval(() => {
+        seconds--;
+        timerElement.textContent = seconds;
+
+        if (seconds <= 0) {
+          clearInterval(interval);
+          closeModal();
+          showResults();
+        }
+      }, 1000);
+    }
+
+    function showResults() {
+      const buttonSize = getButtonSize(currentDevice);
+      const resultTitle = document.getElementById("resultTitle");
+      const likeBtn = document.getElementById("likeBtn");
+
+      resultTitle.innerHTML = `<strong>${currentDevice}</strong>`;
+      likeBtn.style.display = "inline-block"; // Show Like button
+      updateButtonSizeItem("buttonSize", buttonSize.size);
+
+      document.getElementById("resultModal").style.display = "flex";
+    }
+
+    function updateButtonSizeItem(type, value) {
+      const valueElement = document.getElementById(`${type}Value`);
+      valueElement.textContent = `${value}%`;
+    }
+
+    function hideLike() {
+      document.getElementById("likeBtn").style.display = "none";
+    }
+
+    function shareResult() {
+      const buttonSize = getButtonSize(currentDevice);
+      const shareText = `Check out my Free Fire Fire Button Size for ${currentDevice}: ${buttonSize.size}%! Try it at https://vortexon1.github.io/ffsensi/fire-button-size.html #FreeFire #Gaming`;
+      const encodedText = encodeURIComponent(shareText);
+      window.open(`https://wa.me/?text=${encodedText}`, '_blank');
+    }
+
+    function jumpToPro() {
+      alert('Ready to dominate with this fire button size!');
+    }
+  </script>
+</body>
+</html>
